@@ -29,7 +29,9 @@ router.get("/szerviz/:id", async (req, res, next) => {
 router.post("/szerviz", async (req, res, next) => {
     try{
         const result = await dbRun("INSERT INTO kutyaszerviz (fajta, haviDij, kezelesSzam, uzenetek) VALUES (?, ?, ?, ?);", [req.body.fajta, req.body.haviDij, req.body.kezelesSzam, req.body.uzenetek]);
-        res.status(201).json({id: result.lastID, ...req.body})
+        console.log(result)
+        console.log(JSON.stringify(result))
+        // res.status(201).json({id: result.lastID, ...req.body})
     }
     catch(err){
         next(err)
